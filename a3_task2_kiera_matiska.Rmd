@@ -122,7 +122,7 @@ Check the output after running the code.
 mpg_make_model <- mpg %>% # Start with mpg
   unite(col = make_model, # Create a new column called 'make_model'
         c(manufacturer, model), # That combines the manufacturer & model column
-        sep = "HEY!" # Puts "HEY!" between the pieces (default is underscore)
+        sep = "_" # Puts "HEY!" between the pieces (default is underscore)
         ) 
 
 # Feel free to try different separators in the `sep = ""` argument above.
@@ -137,7 +137,10 @@ In the code chunk below, starting from the `mpg` data create a new data frame ca
 ```{r}
 # Your code here: 
 
-
+mpg_model_class <- mpg %>% 
+  unite(col = model_class,
+        c(model, class),
+        sep = "-")
 ```
 
 ### 3. Parsing dates with `lubridate()`
