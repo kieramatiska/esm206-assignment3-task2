@@ -212,7 +212,7 @@ sw_sep_hair &lt;- starwars %&gt;% # Start with starwars
 <pre class="r"><code># Your code here: 
 
 sw_split_name &lt;- starwars %&gt;% 
-  separate(col = name,
+  separate(col = name, # Separates one column into two
            into = c(&quot;name_1&quot;, &quot;name_2&quot;),
            sep = &quot;-&quot;)</code></pre>
 </div>
@@ -242,9 +242,9 @@ sw_sep_names &lt;- starwars %&gt;% # Start from starwars data
 <pre class="r"><code># Your code here:
 
 sw_skin_sep &lt;- starwars %&gt;% 
-  separate(col = skin_color,
+  separate(col = skin_color, # Separate one column into two
            into = c(&quot;skin_1&quot;, &quot;skin_2&quot;),
-           sep = &quot;,&quot;,
+           sep = &quot;,&quot;, # The separating variable is a comma
            extra = &quot;merge&quot;,
            remove = FALSE)</code></pre>
 </div>
@@ -274,7 +274,7 @@ mpg_make_model &lt;- mpg %&gt;% # Start with mpg
 <pre class="r"><code># Your code here: 
 
 mpg_model_class &lt;- mpg %&gt;% 
-  unite(col = model_class,
+  unite(col = model_class, # Combine two separate columns into one
         c(model, class),
         sep = &quot;-&quot;)</code></pre>
 </div>
@@ -300,7 +300,7 @@ ymd(20201118)</code></pre>
 <p>In the code chunk below, use <code>ymd()</code> to convert a date that you choose in <code>YYYY-MM-DD</code>, <code>YYYY/MM/DD</code> and <code>YYYYMMDD</code> form to a Date class:</p>
 <pre class="r"><code># Your code here: 
 
-ymd(19980922)</code></pre>
+ymd(19980922) # Make dates all the same</code></pre>
 <pre><code>## [1] &quot;1998-09-22&quot;</code></pre>
 <pre class="r"><code>ymd(&quot;1998/09/22&quot;)</code></pre>
 <pre><code>## [1] &quot;1998-09-22&quot;</code></pre>
@@ -325,7 +325,7 @@ my_dates_converted # Return my_dates_converted</code></pre>
 <p>In the code chunk below, create a vector (using <code>c()</code>, as above) stored as <code>some_dates</code> that contains three values that represent dates as numbers, in mdy format: 11061972, 02142007,01301843. Then in the next line, use <code>lubridate::mdy()</code> to return them in date format, storing as a vector <code>some_dates_converted</code>. Write a third line to check the class of that vector.</p>
 <pre class="r"><code># Your code here: 
 
-some_dates &lt;- c(10071999, 09221998, 10172007)
+some_dates &lt;- c(10071999, 09221998, 10172007) # Convert date column into a date class
 some_dates_converted &lt;- mdy(some_dates)
 
 class(some_dates_converted)</code></pre>
@@ -383,10 +383,10 @@ points_by_month</code></pre>
 </ul>
 <pre class="r"><code># Your code here: 
 
-gasoal_hookshots &lt;- lakers %&gt;% 
+gasoal_hookshots &lt;- lakers %&gt;% # Create a new data frame
   filter(player == &quot;Pou Gasol&quot; | type == &quot;hook&quot;) %&gt;% 
   mutate(date = ymd(date)) %&gt;% 
-  mutate(date_month = month(date)) %&gt;% 
+  mutate(date_month = month(date)) %&gt;% # Create a new column
   count(date_month)</code></pre>
 </div>
 </div>
@@ -423,8 +423,8 @@ storm_season &lt;- storms %&gt;% # Start from storms data
 <pre class="r"><code># Your code here: 
 
 storms_danger &lt;- storms %&gt;% 
-  mutate(danger = case_when(
-    status == &quot;hurricane&quot; ~ &quot;high&quot;,
+  mutate(danger = case_when( # Uses if-when statements
+    status == &quot;hurricane&quot; ~ &quot;high&quot;, 
     status != &quot;hurricane&quot; ~ &quot;moderate&quot;
   ))</code></pre>
 </div>
